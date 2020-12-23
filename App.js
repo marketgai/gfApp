@@ -5,6 +5,30 @@ import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import logo from './assets/annoyed.png';
 import sendSMS from 'react-native-sms';
 import * as SMS from 'expo-sms';
+import axios from 'axios';
+
+
+const getMsg = (group) => {
+  axios.get(`http://localhost:5555/message/${group}`)
+  .then((msg)=> console.log(msg))
+}
+
+const messages = ['WHY ARENT YOU PAYING ATTENTION TO ME!!', 'PAY ATTENTION TO ME NOWWW!!', 'HEY WHATS UP', 'I LIKE YOU', 'OKAY NOW IM GETTING ANNOYED', 'I HATE YOU', 'IM SORRY', 'I BOUGHT YOU SOMETHING', 'WANT TO EAT?', 'ARE YOU IGNORING ME?', 'WHAT ARE YOU DOING?', '<3']
+
+const generateMsg = () => {
+  const n = Math.floor(Math.random() * 12);
+  return messages[n];
+}
+
+const smsFunc = async () => {
+  alert('ANNOYING BOYFRIEND NOW');
+  const status = await SMS.sendSMSAsync(
+    ['16505041488'],
+    // generateMsg(),
+    getMsg('attention')
+  );
+  console.log(status);
+}
 
 class gfApp extends Component {
   render() {
@@ -38,21 +62,27 @@ class gfApp extends Component {
 
 export default gfApp
 
-const messages = ['WHY ARENT YOU PAYING ATTENTION TO ME!!', 'PAY ATTENTION TO ME NOWWW!!', 'HEY WHATS UP', 'I LIKE YOU', 'OKAY NOW IM GETTING ANNOYED', 'I HATE YOU', 'IM SORRY', 'I BOUGHT YOU SOMETHING', 'WANT TO EAT?', 'ARE YOU IGNORING ME?', 'WHAT ARE YOU DOING?', '<3']
+// const getMsg = (group) => {
+//   axios.get(`${window.location.origin}/message/attention`)
+//   .then((msg)=> console.log(msg))
+// }
 
-const generateMsg = () => {
-  const n = Math.floor(Math.random() * 12);
-  return messages[n];
-}
+// const messages = ['WHY ARENT YOU PAYING ATTENTION TO ME!!', 'PAY ATTENTION TO ME NOWWW!!', 'HEY WHATS UP', 'I LIKE YOU', 'OKAY NOW IM GETTING ANNOYED', 'I HATE YOU', 'IM SORRY', 'I BOUGHT YOU SOMETHING', 'WANT TO EAT?', 'ARE YOU IGNORING ME?', 'WHAT ARE YOU DOING?', '<3']
 
-const smsFunc = async () => {
-  alert('ANNOYING BOYFRIEND NOW');
-  const status = await SMS.sendSMSAsync(
-    ['16505041488'],
-    generateMsg(),
-  );
-  console.log(status);
-}
+// const generateMsg = () => {
+//   const n = Math.floor(Math.random() * 12);
+//   return messages[n];
+// }
+
+// const smsFunc = async () => {
+//   alert('ANNOYING BOYFRIEND NOW');
+//   const status = await SMS.sendSMSAsync(
+//     ['16505041488'],
+//     // generateMsg(),
+//     getMsg('test')
+//   );
+//   console.log(status);
+// }
 
 
 
