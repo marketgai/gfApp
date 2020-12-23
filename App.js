@@ -9,8 +9,13 @@ import axios from 'axios';
 
 
 const getMsg = (group) => {
-  axios.get(`http://localhost:5555/message/${group}`)
-  .then((msg)=> console.log(msg))
+  //this is correct endpoint... was working
+  axios.get(`http://54.151.32.166:5555/message/${group}`)
+  .then((response)=> {
+    console.log('response', JSON.stringify(response.data[0].message))
+    return JSON.stringify(response.data[0].message)
+  })
+  .catch((err)=> console.log('error', err))
 }
 
 const messages = ['WHY ARENT YOU PAYING ATTENTION TO ME!!', 'PAY ATTENTION TO ME NOWWW!!', 'HEY WHATS UP', 'I LIKE YOU', 'OKAY NOW IM GETTING ANNOYED', 'I HATE YOU', 'IM SORRY', 'I BOUGHT YOU SOMETHING', 'WANT TO EAT?', 'ARE YOU IGNORING ME?', 'WHAT ARE YOU DOING?', '<3']
@@ -21,11 +26,15 @@ const generateMsg = () => {
 }
 
 const smsFunc = async () => {
-  alert('ANNOYING BOYFRIEND NOW');
+  // alert('ANNOYING BOYFRIEND NOW');
+  const msg = await getMsg('attention');
+  //async issues, msg is undefined
+  console.log(msg)
   const status = await SMS.sendSMSAsync(
     ['16505041488'],
     // generateMsg(),
-    getMsg('attention')
+    await getMsg('attention')
+
   );
   console.log(status);
 }
