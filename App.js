@@ -24,6 +24,7 @@ export default class Nav extends Component {
   render() {
     createHomeStack = () => (
       <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Feed" component={Feed} />
       </Stack.Navigator>
     );
