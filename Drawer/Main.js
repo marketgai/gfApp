@@ -16,11 +16,11 @@ const getMsg = (group, callback) => {
     .catch((err) => callback(err));
 };
 
-const smsFunc = async (category) => {
+const smsFunc = async (category, phone) => {
   // alert('ANNOYING BOYFRIEND NOW');
   try {
     const msg = await getMsg(category, (err, result) => {
-      SMS.sendSMSAsync([ '16505041488' ], result);
+      SMS.sendSMSAsync(phone, result);
       console.log('result', result);
     });
   } catch (err) {
@@ -32,8 +32,8 @@ class gfApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category : 'attention',
-      phone    : ''
+      category : 'Category',
+      phone    : '16505041488'
     };
   }
 
@@ -55,7 +55,7 @@ class gfApp extends Component {
         />
         <TouchableOpacity
           onPress={() => {
-            smsFunc(this.state.category);
+            smsFunc(this.state.category, this.state.phone);
           }}
           style={{ backgroundColor: 'white' }}
         >
