@@ -11,7 +11,7 @@ const getMsg = (group, callback) => {
   axios
     .get(`http://54.151.32.166:5555/message/${group}`)
     .then((response) => {
-      callback(null, JSON.stringify(response.data[0].message));
+      callback(null, response.data[0].message);
     })
     .catch((err) => callback(err));
 };

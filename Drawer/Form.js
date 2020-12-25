@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useCallback } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import axios from 'axios';
 
 class Form extends Component {
   constructor(props) {
@@ -8,6 +9,19 @@ class Form extends Component {
       category : '',
       message  : ''
     };
+    this.addMsg = this.addMsg.bind(this);
+  }
+
+  addMsg() {
+    axios
+      .post(`http://54.151.32.166:5555/message`, {
+        category : this.state.category,
+        message  : this.state.message
+      })
+      .then((response) => {
+        console.log('posted');
+      })
+      .catch((err) => callback(err));
   }
 
   render() {
@@ -16,11 +30,28 @@ class Form extends Component {
         <Text style={styles.header}>Create your own custom Messages!</Text>
         <View>
           <Text style={styles.label}>Category:</Text>
-          <TextInput style={styles.textbox} />
+          <TextInput
+            style={styles.textbox}
+            value={this.state.category}
+            onChangeText={(category) => {
+              this.setState({ category });
+            }}
+          />
           <Text style={styles.label}>Message:</Text>
-          <TextInput style={styles.textbox2} />
+          <TextInput
+            style={styles.textbox}
+            value={this.state.message}
+            onChangeText={(message) => {
+              this.setState({ message });
+            }}
+          />
         </View>
-        <Button title="Submit" />
+        <Button
+          title="Submit"
+          onPress={() => {
+            this.addMsg();
+          }}
+        />
       </View>
     );
   }
@@ -42,15 +73,10 @@ const styles = StyleSheet.create({
     fontSize : 18
   },
   textbox   : {
-    height      : 30,
-    width       : 300,
-    borderColor : 'gray',
-    borderWidth : 1
-  },
-  textbox2  : {
-    height      : 30,
-    width       : 300,
-    borderColor : 'gray',
-    borderWidth : 1
+    height       : 30,
+    width        : 300,
+    borderColor  : 'gray',
+    borderWidth  : 1,
+    borderRadius : 2
   }
 });

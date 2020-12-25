@@ -22,10 +22,11 @@ const styles = StyleSheet.create({
     fontSize : 20
   },
   textbox   : {
-    height      : 30,
-    width       : 300,
-    borderColor : 'gray',
-    borderWidth : 1
+    height       : 30,
+    width        : 300,
+    borderColor  : 'gray',
+    borderWidth  : 1,
+    borderRadius : 2
   }
 });
 
