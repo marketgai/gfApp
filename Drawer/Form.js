@@ -18,7 +18,7 @@ class Form extends Component {
           <Text style={styles.label}>Category:</Text>
           <TextInput style={styles.textbox} />
           <Text style={styles.label}>Message:</Text>
-          <TextInput />
+          <TextInput style={styles.textbox2} />
         </View>
         <Button title="Submit" />
       </View>
@@ -42,6 +42,15 @@ const styles = StyleSheet.create({
     fontSize : 18
   },
   textbox   : {
-    height : 40
+    height      : 30,
+    width       : 300,
+    borderColor : 'gray',
+    borderWidth : 1
+  },
+  textbox2  : {
+    height      : 30,
+    width       : 300,
+    borderColor : 'gray',
+    borderWidth : 1
   }
 });

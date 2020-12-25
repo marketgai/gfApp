@@ -4,7 +4,7 @@ import needy from '../assets/NeedyGF.gif';
 
 const Home = (props) => (
   <View style={styles.container}>
-    <Image source={needy} style={{ width: 500, height: 500 }} />
+    <Image source={needy} style={{ width: 400, height: 400 }} />
     <Text style={styles.text}>The quickest way to get attention</Text>
   </View>
 );

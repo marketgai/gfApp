@@ -5,9 +5,9 @@ const Settings = (props) => (
   <View style={styles.container}>
     <Text>Settings</Text>
     <Text>Bae's Digits</Text>
-    <TextInput />
+    <TextInput style={styles.textbox} />
     <Text>Type of messages you want to send</Text>
-    <TextInput />
+    <TextInput style={styles.textbox} />
   </View>
 );
 
@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
   },
   text      : {
     fontSize : 20
+  },
+  textbox   : {
+    height      : 30,
+    width       : 300,
+    borderColor : 'gray',
+    borderWidth : 1
   }
 });
 
