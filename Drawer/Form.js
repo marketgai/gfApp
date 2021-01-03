@@ -14,12 +14,13 @@ class Form extends Component {
 
   addMsg() {
     axios
-      .post(`http://54.151.32.166:5555/message`, {
+      .post(`http://54.183.173.1:5555/message`, {
         category : this.state.category,
         message  : this.state.message
       })
       .then((response) => {
         console.log('posted');
+        this.setState({ message: '' });
       })
       .catch((err) => callback(err));
   }

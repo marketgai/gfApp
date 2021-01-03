@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const getMsg = (group, callback) => {
   axios
-    .get(`http://54.151.32.166:5555/message/${group}`)
+    .get(`http://54.183.173.1:5555/message/${group}`)
     .then((response) => {
       callback(null, response.data[0].message);
     })
@@ -32,8 +32,8 @@ class gfApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category : 'Category',
-      phone    : '16505041488'
+      category : '',
+      phone    : ''
     };
   }
 
@@ -41,12 +41,15 @@ class gfApp extends Component {
     return (
       <View style={styles.container}>
         <TextInput
-          style={{
-            fontSize        : 25,
-            margin          : 30,
-            color           : '#e7e7e7',
-            backgroundColor : '#fafafa'
+          style={styles.textbox}
+          placeholder="Digits"
+          value={this.state.phone}
+          onChangeText={(phone) => {
+            this.setState({ phone });
           }}
+        />
+        <TextInput
+          style={styles.textbox}
           placeholder="Category"
           value={this.state.category}
           onChangeText={(category) => {
@@ -77,6 +80,12 @@ const styles = StyleSheet.create({
     backgroundColor : '#fff',
     alignItems      : 'center',
     justifyContent  : 'center'
+  },
+  textbox   : {
+    fontSize        : 25,
+    margin          : 30,
+    color           : '#e7e7e7',
+    backgroundColor : '#fafafa'
   }
   // header    : {
   //   flex            : 1,

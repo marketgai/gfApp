@@ -34,7 +34,7 @@ export default class Nav extends Component {
           <Drawer.Screen name="Home" children={createHomeStack} />
           <Drawer.Screen name="Create Messages" component={Form} />
           <Drawer.Screen name="Main" component={Main} />
-          <Drawer.Screen name="Settings" component={Settings} />
+          {/* <Drawer.Screen name="Settings" component={Settings} /> */}
         </Drawer.Navigator>
       </NavigationContainer>
     );
