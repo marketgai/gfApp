@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const getMsg = (group, callback) => {
   axios
-    .get(`http://54.183.173.1:5555/message/${group}`)
+    .get(`http://917db7422380.ngrok.io/message/${group}`)
     .then((response) => {
       callback(null, response.data[0].message);
     })

@@ -14,7 +14,7 @@ class Form extends Component {
 
   addMsg() {
     axios
-      .post(`http://54.183.173.1:5555/message`, {
+      .post(`http://917db7422380.ngrok.io/message`, {
         category : this.state.category,
         message  : this.state.message
       })
